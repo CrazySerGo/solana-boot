@@ -26,7 +26,7 @@
 - name: Add custom NTP server to chrony configuration
   lineinfile:
     path: /etc/chrony/chrony.conf
-    line: "server ntp.dallas.jito.wtf iburst"
+    line: "server hk.pool.ntp.org iburst"
 
 - name: Restart chronyd
   become: true
