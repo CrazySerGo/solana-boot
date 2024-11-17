@@ -2,13 +2,13 @@
 mount_base_path: '/mnt/solana'
 swap_file_size_gb: '300'
 ramdisk_path: "{{ mount_base_path }}/ramdisk"
-ramdisk_size_gb: 200
+ramdisk_size_gb: 300
 use_ramdisk_for_account: True
 use_firewall: True
 solana_user: solana
 solana_home: "/home/{{ solana_user }}"
 secrets_path: "/home/{{ solana_user }}/.secrets"
-solana_version: 2.0.14
+solana_version: 2.0.15
 env_path: "{{ solana_home }}/.local/share/solana/install/active_release/bin"
 cluster_rpc_address: 'https://api.testnet.solana.com'
 validator_log_path: "{{ mount_base_path }}/log"
@@ -16,7 +16,7 @@ solana_validator_service: stopped
 solana_metrics_url: 'https://metrics.solana.com:8086,db=tds,u=testnet_write,p=c4fa841aa918bf8274e3e2a44d77568d9861b3ea'
 solana_rpc_port: 8899
 expected_genesis_hash: 4uhcVJyU9pJkvQyS88uRDiswHXSCkY3zQawwpjk2NsNY
-maximum_local_snapshot_age: 3000
+maximum_local_snapshot_age: 1500
 limit_ledger_size: 50000000
 ledger_path: /mnt/solana_ledger/ledger
 accounts_path: "{{ ramdisk_path }}/accounts"
