@@ -31,7 +31,9 @@ ExecStart={{ env_path }}/agave-validator \
 --known-validator {{ known_validator }} \
 {% endfor %}
 --wal-recovery-mode skip_any_corrupted_record \
---limit-ledger-size \
+--block-verification-method unified-scheduler \
+--replay-slots-concurrently \
+--limit-ledger-size 50000000 \
 --log {{ validator_log_path }}/solana-validator.log \
 --maximum-incremental-snapshots-to-retain 1 \
 --ledger {{ ledger_path }} \
