@@ -1,10 +1,6 @@
 #!/bin/bash
 
-if [[ ! -f /home/solana/.secrets/validator-keypair.json || ! -f /home/solana/.secrets/validator-keypair.json ]]
-then
-  echo ''
-  echo ''
-  echo -e "👷  Hello {{ 'Jito' if jito_enable else ''  }} Solana Operator. Your node is almost ready."
+if [[ ! -f /home/solana/.secrets/validator-keypair.json || ! -f /home/solana/.secrets/validator-keypair.json ]]; then
   echo ''
 {% if jito_enable %}
   echo -e "🔑  If it's your primary node or if you only have one node, create the following symlink"
@@ -15,37 +11,29 @@ then
   echo -e "🚀  Start service:"
   echo -e "sudo systemctl start solana-validator"
   echo ''
-  echo -e '👀  Watch logs:'
+  echo -e "👀  Watch logs:"
   echo 'tail -f /mnt/solana/log/solana-validator.log'
   echo ''
   echo ''
+{% endif %}
 fi
 
-if [[ -f /home/solana/.secrets/validator-keypair.json || -f /home/solana/.secrets/validator-keypair.json ]]
-then
-  echo -e "👷  Hello {{ 'Jito' if jito_enable else ''  }} Solana Operator."
+if [[ -f /home/solana/.secrets/validator-keypair.json || -f /home/solana/.secrets/validator-keypair.json ]]; then
+  echo -e "💡  Command Cheat Sheet:"
   echo ''
-{% if jito_enable %}
-  echo -e "🚨 The Jito Solana Software does not come pre-installed, therefore, you will have to compile it from its source code."
-  echo -e "📗 Follow this doc to build Jito software. https://jito-foundation.gitbook.io/mev/jito-solana/building-the-software"
-  echo -e "📘 Or use build-jito.sh script in solana home directory."
-{% endif %}
-  echo ''
-  echo -e "💡 Command Cheat Sheet:"
-  echo ''
-  echo -e "Start service"
+  echo -e "Start service:"
   echo -e "sudo systemctl start solana-validator"
   echo ''
-  echo -e "Stop service"
+  echo -e "Stop service:"
   echo -e "sudo systemctl stop solana-validator"
   echo ''
-  echo -e "Restart service"
+  echo -e "Restart service:"
   echo -e "sudo systemctl restart solana-validator"
   echo ''
-  echo -e '👀  Watch logs'
+  echo -e "👀  Watch logs:"
   echo 'tail -f /mnt/solana/log/solana-validator.log'
   echo ''
-  echo 'Update solana client'
+  echo -e "Update Solana client:"
   echo 'sudo -i -u solana agave-install init <version>'
   echo 'sudo -i -u solana agave-validator --ledger {{ ledger_path }} wait-for-restart-window && sudo systemctl restart solana-validator'
   echo ''
